@@ -1,5 +1,5 @@
-from utils.db_utils import dictfetchall
-from django.db import connection
+from bugdify.core.helpers.sql import dictfetchall, format_query_for_debugging
+from django.db import connections
 
 
 class UsersRepository():
@@ -7,7 +7,7 @@ class UsersRepository():
     def find_all(self):
         SQL = """SELECT * FROM users;"""
         
-        with connection.cursor() as cursor:
+        with connections['bugdify'].cursor() as cursor:
             cursor.execute(SQL)
             data = dictfetchall(cursor)
             
@@ -25,8 +25,9 @@ class UsersRepository():
             'id': pk
         }
         
-        with connection.cursor() as cursor:
+        with connections['bugdify'].cursor() as cursor:
             cursor.execute(SQL, params)
+            print(format_query_for_debugging(SQL, params))
             data = dictfetchall(cursor)
             
         return data[0] if data else {}
