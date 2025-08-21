@@ -6,6 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('bugdify.users.urls')),
+    path('api/', include('bugdify.auth.urls')),
 ]
 
 if settings.DEBUG:

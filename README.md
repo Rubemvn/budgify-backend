@@ -31,3 +31,45 @@ API desenvolvida em Django para gerenciamento e controle de finanças pessoais. 
    ```bash
    git clone https://github.com/seu-usuario/budgify-backend.git
    cd budgify-backend
+   ```
+
+2. Crie e ative o ambiente virtual (recomendado):
+
+   ```bash
+   uv venv
+   source .venv/bin/activate  # Linux/Mac
+   .venv\Scripts\activate     # Windows
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+
+4. Execute as migrações:
+
+   ```bash
+   uv run manage.py migrate
+   ```
+
+5. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   uv run manage.py runserver
+   ```
+
+---
+
+## Criar novos apps
+
+Este projeto possui um comando customizado para criar novos apps no Django:
+
+```bash
+cd bugdify
+uv run ../manage.py newapp <app_name>
+```
+
+Substitua `<app_name>` pelo nome do app que deseja criar.
+
+---
